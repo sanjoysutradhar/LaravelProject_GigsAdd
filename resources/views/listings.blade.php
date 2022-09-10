@@ -14,7 +14,7 @@ $test=1;
 <h1>{{$heading}}</h1>
 
 @foreach($listings as $listing)
-    <h2> {{$listing['title']}} </h2>
+    <a href="/listing/{{$listing['id']}}" ><h2> {{$listing['title']}} </h2></a>
     <p> {{$listing['description']}} </p>
 @endforeach
 
