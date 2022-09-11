@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 
@@ -14,25 +15,22 @@ use App\Models\Listing;
 |
 */
 // All Listing
-Route::get('/', function () {
-    return view('listings',[
-        // 'heading'=>'Latest listing',
-        'listings'=> Listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 //Single Listing
-Route::get('/listing/{id}',function($id){
-    $listing = Listing::find($id);
+Route::get('/listing/{listing}', [ListingController::class, 'show']);
 
-    if($listing) {
-        return view('listing',[
-            'listing'=>$listing
-        ]);
-    }else{
-        abort('404');
-    }
-});
+// Route::get('/listing/{id}',function($id){
+//     $listing = Listing::find($id);
+
+//     if($listing) {
+//         return view('listing',[
+//             'listing'=>$listing
+//         ]);
+//     }else{
+//         abort('404');
+//     }
+// });
 
 // Route::get('/hello', function() {
 //     return "Hello World";
@@ -44,3 +42,12 @@ Route::get('/listing/{id}',function($id){
 // Route::get('/post/{id}', function($id){
 //     return response("post ".$id);
 // })->where ('id', '[0-9]+');
+
+//commom resource routes:
+// index -show all listings
+// show - show single listing
+// create - show from to edit listing
+// store - store new listing
+// edit - show form to edit listing
+// update -update listing
+// destroy - delete listing
