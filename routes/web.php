@@ -17,8 +17,13 @@ use App\Models\Listing;
 // All Listing
 Route::get('/', [ListingController::class, 'index']);
 
+// show create Form
+Route::get('/listing/create', [ListingController::class, 'create']);
+// store listing data
+Route::post('/listing', [ListingController::class, 'store']);
 //Single Listing
 Route::get('/listing/{listing}', [ListingController::class, 'show']);
+
 
 // Route::get('/listing/{id}',function($id){
 //     $listing = Listing::find($id);
