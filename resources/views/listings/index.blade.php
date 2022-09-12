@@ -13,8 +13,13 @@
     @else
     <p>No Listings Found</p>
     @endunless
+    
 </div>
-<div class="mt-6 p-4">
+    
+<div class="mt-6 p-4 d-flex">
     {{$listings->links()}}
 </div>
+<!-- <div class="d-flex justify-content-center">
+    {{ $listings->links() }}
+</div> -->
 @endsection
