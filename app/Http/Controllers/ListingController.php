@@ -16,7 +16,9 @@ class ListingController extends Controller
             // 'heading'=>'Latest listing',
             //'listings'=> Listing::all() //get all listings data
             //tags and search filter
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+            // 'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+            'listings' => Listing::latest()->filter(request(['tag',
+             'search']))->paginate(4)
         ]);
     }
     //show single listing
