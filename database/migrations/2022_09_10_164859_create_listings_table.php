@@ -13,18 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('logo')->nullable();
-            $table->string('tag');
-            $table->string('company');
-            $table->string('location');
-            $table->string('email');
-            $table->string('website');
-            $table->longText('description');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('listings')){
+            Schema::create('listings', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained()->onDelete('cascade');
+                $table->string('title');
+                $table->string('logo')->nullable();
+                $table->string('tag');
+                $table->string('company');
+                $table->string('location');
+                $table->string('email');
+                $table->string('website');
+                $table->longText('description');
+                $table->timestamps();
+            });
+
+        }
+
+        
     }
 
     /**
