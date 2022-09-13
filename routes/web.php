@@ -41,6 +41,10 @@ Route::post('/users',[UserController::class, 'store']);
 //Log User Out
 Route::post('/logout',[UserController::class, 'logout']);
 
+//Show login form
+Route::get('/login',[UserController::class,'login']);
+
+Route::post('/users/authecticate',[UserController::class,'authecticate']);
 
 // Route::get('/listing/{id}',function($id){
 //     $listing = Listing::find($id);
